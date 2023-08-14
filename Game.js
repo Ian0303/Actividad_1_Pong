@@ -32,11 +32,15 @@ export default class Game extends Phaser.Scene {
         });
 
         this.barGroup.add(this.bar);
+
         this.physics.world.setBoundsCollision(true, true, true, false);
+        
         this.hit = 0
         this.level = 1
         this.velocityBall = 180
+
         this.cursors = this.input.keyboard.createCursorKeys();
+        
         this.randomX = Phaser.Math.RND.between(100, 700);
         this.randomY = Phaser.Math.RND.between(100, 500);
         this.randomScaleX = Phaser.Math.RND.between(0.1, 0.3);
@@ -75,7 +79,7 @@ export default class Game extends Phaser.Scene {
             frontFamily: "Console",
             fill: "#000000",
         });
-        this.levelText = this.add.text(80, 57, "Nivel: " + this.level, {
+        this.levelText = this.add.text(80, 37, "Nivel: " + this.level, {
             fontSize: "20px",
             fontStyle: "bold",
             frontFamily: "Console",
@@ -105,19 +109,21 @@ export default class Game extends Phaser.Scene {
     }
 
     rebote() {
-        this.ball
+     /*    this.ball
             .setVelocityY(-250)
             .setVelocityX(-250)
             ;
-
+ */
         this.hit++
         console.log(this.hit)
         this.hitText.setText("Puntos: " + this.hit);
+        this.passLevel();
     }
 
 
-    passLvel() {
-        this.level++;
+    passLevel() {
+        if (this.hit === 10) {
+             this.level++;
         this.levelText.setText("Nivel: " + this.level);
 
         this.velocityBall = this.velocityBall * 1.1;
@@ -130,6 +136,8 @@ export default class Game extends Phaser.Scene {
 
         this.addObstacle()
 
+
+        }
     }
 
 
