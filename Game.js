@@ -54,11 +54,6 @@ export default class Game extends Phaser.Scene {
         this.randomY = Phaser.Math.RND.between(100, 500);
         this.randomScale = Phaser.Math.RND.between(0.2, 0.4);
 
-        this.obstacleGroup = this.physics.add.group({
-        });
-        
-        this.obstacleGroup.add(this.obstacle);
-
 
         this.ball = this.physics.add
             .sprite(400, 300, "ball")
