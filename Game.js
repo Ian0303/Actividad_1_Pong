@@ -55,8 +55,6 @@ export default class Game extends Phaser.Scene {
         this.randomScale = Phaser.Math.RND.between(0.2, 0.4);
 
         this.obstacleGroup = this.physics.add.group({
-            immovable: true,
-            allowGravity: false,
         });
         
         this.obstacleGroup.add(this.obstacle);
